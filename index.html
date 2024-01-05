@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
-    <title>晦涩弗里曼的Steam个人资料</title>
+    <title>Steam个人资料</title>
     <meta charset="utf-8">
     <meta name="description" content="Show Steam Info">
     <meta name="keywords" content="Show Steam Info">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jq-paginator/dist/jq-paginator.min.js"></script>
     <style>
            .fakeimg {
@@ -32,6 +32,19 @@
             position: fixed;
             bottom: 0;
         }
+
+        .video-container {
+            position: fixed;
+            height: 100vh; /* 设置容器高度为视口高度 */
+            width: 100%; /* 设置容器宽度为100% */
+            object-fit: cover;
+            object-position: center; /* 将视频居中对齐 */
+        }
+
+        .card {
+            --bs-card-bg: #1c1f294e;
+        }
+
     </style>
 </head>
 <!-- <div class="jumbotron text-center" style="margin-bottom:0">
@@ -41,13 +54,21 @@
 </div> -->
 
 <body>
-    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <a class="navbar-brand" href="https://github.com/obscurefreeman/steam_info_page">Github </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/546560/6a20856db4ca5c1ea0c03c32790d66876c1fbf9a.webm" type="video/webm">
+        </video>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            Steam个人资料
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="https://obscurefreeman.netlify.app/">博客</a>
                 </li>
@@ -57,43 +78,44 @@
                 <li class="nav-item">
                     <a class="nav-link" href="https://space.bilibili.com/523837807">视频</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    查找
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://steamdb.info/calculator/">获取 Steam ID</a></li>
+                    <li><a class="dropdown-item" href="https://steamcommunity.com/dev/">获取 Steam Web API</a></li>
+                    <li><a class="dropdown-item" href="https://steamdb.info/badge/13/">顶级游戏拥有者</a></li>
+                    <li><a class="dropdown-item" href="https://steamdb.info/stats/toplevels/">玩家等级排名</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    帮助
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://obscurefreeman.netlify.app/游戏/steam小知识/">Steam 帮助</a></li>
+                    <li><a class="dropdown-item" href="https://obscurefreeman.netlify.app/技术/在网站里嵌入组件/">组件嵌入帮助</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://obscurefreeman.github.io/workshop-badges-generator/">创意工坊徽章生成器</a>
+                </li>
             </ul>
+            <form class="d-flex" role="search" action="" method="GET">
+            <input class="form-control me-2" type="search" name="sid" placeholder="输入 Steam ID" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">🔍︎</button>
+            </form>
+        </div>
         </div>
     </nav>
     <br>
     <div class="row">
-        <div class="col-md">
+        <div class="col-md-3">
             <div class="container center">
                 <div class="card" id="sui">
                     <div class="card-footer" id="sui2"></div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md">
-            <div class="container">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h4 class="card-title">最近在玩</h4>
-                    </div>
-                    <ul class="list-group" id="yxlb">
-                        <li class="list-group-item  list-group-item-info text-center" id="zzzw"></li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h4 class="card-title">游戏库存</h4>
-                    </div>
-                    <ul class="list-group" id="yxkc">
-                    </ul>
-                    <div class="card-footer" id="fttsd">
-                        <ul class="pagination" id="ttsd"></ul>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-md">
-            <div class="container">
                 <div class="card">
                     <div class="card-header text-center">
                         <h4 class="card-title">好友列表</h4>
@@ -108,6 +130,49 @@
                 </div>
             </div>
         </div>
+        <div class="col-md">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h4 class="card-title">最近在玩</h4>
+                    </div>
+                    <ul class="list-group" id="yxlb">
+                        <li class="list-group-item  list-group-item-info text-center" id="zzzw"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h4 class="card-title">游戏库存</h4>
+                    </div>
+                    <ul class="list-group" id="yxkc">
+                    </ul>
+                    <div class="card-footer" id="fttsd">
+                        <ul class="pagination" id="ttsd"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-md">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h4 class="card-title">好友列表</h4>
+                    </div>
+                    <ul class="list-group" id="flst">
+                        <li class="list-group-item  list-group-item-info" id="flsn"></li>
+                    </ul>
+
+                    <div class="card-footer" id="fttsd2">
+                        <ul class="pagination" id="ttsd2"></ul>
+                    </div>
+                </div>
+            </div>
+        </div> -->
     </div>
     <script>
         function getQueryVariable(variable) {
@@ -120,9 +185,11 @@
             return (false);
         }
         var mainid = '76561199075381326';
+        var accountid = '1115115598';
 
         if (getQueryVariable("sid")) {
             mainid = getQueryVariable("sid");
+            accountid = `${mainid}`;
         } else {
             console.log("默认sid")
         }
@@ -145,7 +212,7 @@
             $("#zzzw").text(htmltext01);
         });
         var sgl;
-        var dogstatus = ["离线", "在线", "忙", "离开", "打盹", "渴望交易", "渴望玩游戏"];
+        var dogstatus = ["离线", "在线", "忙碌", "离开", "打盹", "寻找交易", "寻找游戏"];
         getdogsum();
         function getdogsum(cbk) {
             $.getJSON(`https://obscurefreeman-steam-info-page.1093048022.workers.dev/sum/${mainid}`, function (json) {
@@ -155,9 +222,10 @@
                 var sdy = new Date(sua * 1000);
                 // var sdz = new Date(sub * 1000);
                 htmltext1 = `  <div class="card-body"> <h4  class="card-title" >${sgl.response.players[0].personaname}</h4>`;
-                htmltext2 = `<img class="card-img-top img-fluid rounded"  src="${sgl.response.players[0].avatarfull}" alt="Card image" style="width:100%">`;
+                htmltext2 = `<div style="text-align: center;"><img class="card-img-top img-fluid rounded"  src="${sgl.response.players[0].avatarfull}" alt="Card image" style="width:100%; max-width: 200px; margin-top: 8px;"></div>`;
                 htmltext3 = `<p class="card-text"> <span class="badge badge-info">${dogstatus[sgl.response.players[0].personastate]}</span> <br>创号时间：${sdy.toString()} <br></p></div>`;
-                $("#sui").prepend(htmltext2 + htmltext1 + htmltext3)
+                htmltext4 = `<div style="text-align: center;"><iframe src="https://gamer2810.github.io/steam-miniprofile/?accountId=${accountid}" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="210" width="300" allowfullscreen></iframe></div>`;
+                $("#sui").prepend(htmltext2 + htmltext1 + htmltext3 + htmltext4)
                 if (sgl.response.players[0].profileurl) {
                     var uyi = `<a href="${sgl.response.players[0].profileurl}" class="btn btn-primary" style="float:right;">个人资料</a>`;
                     $("#sui2").append(uyi);
@@ -211,12 +279,12 @@
                     console.log(qyu)
                     $('#ttsd2').jqPaginator({
                         totalPages: qyu,
-                        visiblePages: 5,
+                        visiblePages: 2,
                         currentPage: 1,
-                        first: '<li class="page-item"><a class="page-link" href="javascript:void(0);">First</a></li>',
-                        prev: '<li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>',
-                        next: '<li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>',
-                        last: '<li class="page-item"><a class="page-link" href="javascript:void(0);">Last</a></li>',
+                        first: '<li class="page-item"><a class="page-link" href="javascript:void(0);">首页</a></li>',
+                        prev: '<li class="page-item"><a class="page-link" href="javascript:void(0);">前</a></li>',
+                        next: '<li class="page-item"><a class="page-link" href="javascript:void(0);">后</a></li>',
+                        last: '<li class="page-item"><a class="page-link" href="javascript:void(0);">尾页</a></li>',
                         page: '<li class="page-item"><a class="page-link" href="javascript:void(0);">{{page}}</a></li>',
                         onPageChange: function (num, type) {
                             addfendlist("#flst", datacat[num - 1])
@@ -244,7 +312,7 @@
         // }
 
 
-        var PAGEITAM = 10;
+        var PAGEITAM = 11;
         var datadog = [];
         var datacat = [];
         function showitams(pl, dat) {
@@ -279,10 +347,10 @@
                         totalPages: qyu,
                         visiblePages: 5,
                         currentPage: 1,
-                        first: '<li class="page-item"><a class="page-link" href="javascript:void(0);">First</a></li>',
-                        prev: '<li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>',
-                        next: '<li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>',
-                        last: '<li class="page-item"><a class="page-link" href="javascript:void(0);">Last</a></li>',
+                        first: '<li class="page-item"><a class="page-link" href="javascript:void(0);">首页</a></li>',
+                        prev: '<li class="page-item"><a class="page-link" href="javascript:void(0);">前</a></li>',
+                        next: '<li class="page-item"><a class="page-link" href="javascript:void(0);">后</a></li>',
+                        last: '<li class="page-item"><a class="page-link" href="javascript:void(0);">尾页</a></li>',
                         page: '<li class="page-item"><a class="page-link" href="javascript:void(0);">{{page}}</a></li>',
                         onPageChange: function (num, type) {
                             showitams("#yxkc", datadog[num - 1])
