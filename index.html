@@ -35,12 +35,26 @@
         }
 
         .video-container {
-            position: fixed;
-            height: 100vh; /* 设置容器高度为视口高度 */
-            width: 100%; /* 设置容器宽度为100% */
-            object-fit: cover;
-            object-position: center; /* 将视频居中对齐 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
         }
+
+        .video-container video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: cover;
+        }
+
 
         .card {
             --bs-card-bg: #1c1f294e;
@@ -367,6 +381,15 @@
 
             })
         }
+
+        // var videoSources = [
+        // "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/546560/6a20856db4ca5c1ea0c03c32790d66876c1fbf9a.webm",
+        // "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/252490/dae8ebf7314c93939b99efd21e67641f8b92b31e.webm",
+        // ];
+
+        // var randomIndex = Math.floor(Math.random() * videoSources.length);
+
+        // document.querySelector(".video-container video").setAttribute("src", videoSources[randomIndex]);
 
     </script>
 
