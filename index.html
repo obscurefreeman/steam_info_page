@@ -135,7 +135,8 @@
         <div class="col-md-3">
             <div class="container center">
                 <div class="card" id="sui">
-                    <div class="card-footer" id="sui2"></div>
+                    <div class="d-grid gap-2 col-11 mx-auto" id="sui2"></div>
+                    <ul class="list-group list-group-flush" id="idlist"></ul>
                 </div>
                 <div class="card">
                     <div class="card-header text-center">
@@ -210,7 +211,7 @@
 
         if (getQueryVariable("sid")) {
             mainid = getQueryVariable("sid");
-            accountid = `${mainid}`;
+            accountid = BigInt(mainid) - BigInt(76561197960265728);
         } else {
             console.log("默认sid")
         }
@@ -248,7 +249,7 @@
                 htmltext4 = `<div style="text-align: center;"><iframe src="https://gamer2810.github.io/steam-miniprofile/?accountId=${accountid}" style="border: none; background-color: transparent;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="210" width="300" allowtransparency="true" allowfullscreen></iframe></div>`;
                 $("#sui").prepend(htmltext2 + htmltext1 + htmltext3)
                 if (sgl.response.players[0].profileurl) {
-                    var uyi = `<a href="${sgl.response.players[0].profileurl}" class="btn btn-primary" style="float:right;">个人资料</a>`;
+                    var uyi = `<a href="${sgl.response.players[0].profileurl}" class="btn btn-outline-light">个人资料</a>`;
                     $("#sui2").append(uyi);
                 }
             });
@@ -348,7 +349,7 @@
             $.getJSON(`https://obscurefreeman-steam-info-page.1093048022.workers.dev/dog/${mainid}`, function (json) {
                 kc = json.response;
                 if (kc.game_count == null) {
-                    var ooi = `<a href="#" class="btn btn-primary">库存数量:未公开</a>`;
+                    var ooi = `<a href="#" class="btn btn-outline-light">库存数量:未公开</a>`;
                     $("#sui2").prepend(ooi);
                     h02 = `<li class="list-group-item list-group-item-info"><p class="text-center">未公开游戏资料或没有游戏</p></li>`;
                     $("#yxkc").html(h02);
@@ -356,7 +357,7 @@
 
                 } else {
 
-                    var ooi = `<a href="#" class="btn btn-primary">库存数量:${kc.game_count}</a>`;
+                    var ooi = `<a href="${sgl.response.players[0].profileurl}games/?tab=all" class="btn btn-outline-light">库存数量:${kc.game_count}</a>`;
                     $("#sui2").prepend(ooi);
                     var squ = kc.games.length / PAGEITAM;
                     // squ = squ.toFixed();
@@ -381,6 +382,8 @@
 
             })
         }
+
+        document.getElementById('idlist').innerHTML = `<li class="list-group-item">Steam ID：${mainid}</li><li class="list-group-item">Account ID：${accountid.toString()}</li>`;
 
         // var videoSources = [
         // "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/546560/6a20856db4ca5c1ea0c03c32790d66876c1fbf9a.webm",
